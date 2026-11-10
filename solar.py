@@ -187,4 +187,4 @@ commons()
 roselawn()
 
 print("\n----Totals----")
-print("Total DC Power: " + str(totalDCPower) + "kW")
+print("Total DC Wattage: " + str(totalDCPower) + "kW")

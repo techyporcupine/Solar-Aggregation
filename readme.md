@@ -8,3 +8,8 @@ The two installs on Roselawn and University Commons (UC) do not have an API, so 
 
 - Install pandas
 - Install requests
+
+## Future hopes
+
+- I want to push this data to InfluxDB on a pretty continuous interval and then build a grafana dashboard
+- Potentially see if I can somehow find instantaneous power usage for each building
