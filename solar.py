@@ -30,7 +30,7 @@ def satcon():
     try:
         response = requests.post(satconURL, data=satconRawJSON, headers=satconHeaders, timeout=20) # send post request to alsoenergy
     except requests.exceptions.RequestException as e:
-        print(f"Error grabbing Library: {e}")
+        print(f"Error grabbing Hartzler data: {e}")
         return
 
 
@@ -44,22 +44,21 @@ def satcon():
     satconInverterDCOutputClean = [x for x in satconInverterDCData['dataBinned'] if x is not None] # removes all entries with "None" in them
     satconCurrentDCkW = satconInverterDCOutputClean[-1]
     
-    print(satconInverterDCOutputClean)
+    #print(satconInverterDCOutputClean)
 
-    hours = [i * 5 / 60 for i in range(len(satconInverterDCOutputClean))]
+    hours = [i * 5 / 60 for i in range(len(satconInverterACOutputClean))]
 
-    plt.plot(hours, satconInverterDCOutputClean)
+    plt.plot(hours, satconInverterACOutputClean)
     plt.xlabel("Hour of day")
-    plt.ylabel("DC output (kW)")
+    plt.ylabel("Array AC output (kW)")
     plt.xticks(range(0, 25, 1))
     plt.yticks(range(0, 105, 5))
     plt.show()
 
-    print("----Sadie Hartzler Library Solar----")
-    print("Producing since November 2010")
-    print("Latest data:")
-    print("- AC Wattage: " + str(satconCurrentACkW) + "kW")
-    print("- DC Wattage: " + str(satconCurrentDCkW) + "kW")
-    totalDCPower += satconCurrentDCkW
+    #print("----Sadie Hartzler Library Solar----")
+    #print("Producing since November 2010")
+    #print("Latest data:")
+    #print("- AC Wattage: " + str(satconCurrentACkW) + "kW")
+    #print("- DC Wattage: " + str(satconCurrentDCkW) + "kW")
 
 satcon()
